@@ -9,6 +9,8 @@ public class PathCreator : MonoBehaviour
     [SerializeField]
     private float _minPointInterval = 1f;
     public Action<IEnumerable<Vector3>> OnNewPathCreated = delegate { };
+    [SerializeField] private Transform _character, _destination;
+    private bool _drawing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +23,16 @@ public class PathCreator : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            _points.Clear();
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            var hit = Physics2D.Raycast(ray.origin, ray.direction);
+            if (hit && hit.transform == _character)
+            {
+                _drawing = true;
+                _points.Clear();
+            }
         }
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && _drawing)
         {
             var point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             point.z = 0f;
@@ -37,9 +45,21 @@ public class PathCreator : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Fire1") && _drawing)
         {
-            OnNewPathCreated(_points);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            var hit = Physics2D.Raycast(ray.origin, ray.direction);
+            if (hit && hit.transform == _destination)
+            {
+                _drawing = false;
+                OnNewPathCreated(_points);
+            }
+            else
+            {
+                _points.Clear();
+                _renderer.positionCount = 0;
+            }
+            _drawing = false;
         }
     }
 
