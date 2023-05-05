@@ -33,4 +33,8 @@ public class MenuManager : MonoBehaviour
     public void Retry(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void NextLevel(){
+        Debug.Log("Load next level");
+    }
 }
