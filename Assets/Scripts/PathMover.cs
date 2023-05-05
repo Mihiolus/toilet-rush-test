@@ -13,6 +13,7 @@ public class PathMover : MonoBehaviour
     private float _travelDuration = 2f, _reachDistance = 0.1f;
     private Rigidbody2D _body;
     private float _speed;
+    private bool _moving = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,26 +29,33 @@ public class PathMover : MonoBehaviour
         float pathLength = 0f;
         for (int i = 1; i < _path.Count; i++)
         {
-            pathLength += Vector3.Distance(_path[i-1],_path[i]);
+            pathLength += Vector3.Distance(_path[i - 1], _path[i]);
         }
-        _speed = pathLength/_travelDuration;
+        _speed = pathLength / _travelDuration;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (HasPath())
+        if (HasPath() && _moving)
         {
             Vector3 displacement = _path[_nextIndex] - transform.position;
-            if(displacement.magnitude<=_reachDistance){
-                _nextIndex ++;
+            if (displacement.magnitude <= _reachDistance)
+            {
+                _nextIndex++;
                 return;
             }
-            if(displacement.magnitude>_speed*Time.deltaTime){
-                displacement = displacement.normalized*_speed*Time.deltaTime;
+            if (displacement.magnitude > _speed * Time.deltaTime)
+            {
+                displacement = displacement.normalized * _speed * Time.deltaTime;
             }
             transform.Translate(displacement);
         }
+    }
+
+    public void StartMoving()
+    {
+        _moving = true;
     }
 
     private bool HasPath()
