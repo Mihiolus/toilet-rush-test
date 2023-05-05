@@ -53,6 +53,8 @@ public class PathCreator : MonoBehaviour
             {
                 _drawing = false;
                 _points[0] = _character.position;
+                //turn off script to disable redrawing
+                enabled = false;
                 OnNewPathCreated(_points);
             }
             else
