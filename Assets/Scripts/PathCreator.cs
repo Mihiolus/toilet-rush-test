@@ -52,6 +52,7 @@ public class PathCreator : MonoBehaviour
             if (hit && hit.transform == _destination)
             {
                 _drawing = false;
+                _points[0] = _character.position;
                 OnNewPathCreated(_points);
             }
             else
