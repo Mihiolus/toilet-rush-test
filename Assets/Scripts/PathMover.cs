@@ -13,13 +13,15 @@ public class PathMover : MonoBehaviour
     private float _travelDuration = 2f, _reachDistance = 0.1f;
     private Rigidbody2D _body;
     private float _speed;
-    private bool _moving = false;
+    public bool Moving { get; set; }
+    public Action OnCollision = delegate { };
 
     // Start is called before the first frame update
     void Start()
     {
         _body = GetComponent<Rigidbody2D>();
         _pathCreator.OnNewPathCreated += SetPoints;
+        Moving = false;
     }
 
     private void SetPoints(IEnumerable<Vector3> points)
@@ -37,7 +39,7 @@ public class PathMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (HasPath() && _moving)
+        if (HasPath() && Moving)
         {
             Vector3 displacement = _path[_nextIndex] - transform.position;
             if (displacement.magnitude <= _reachDistance)
@@ -53,13 +55,13 @@ public class PathMover : MonoBehaviour
         }
     }
 
-    public void StartMoving()
-    {
-        _moving = true;
-    }
-
     private bool HasPath()
     {
         return _path != null && _nextIndex < _path.Count;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        OnCollision();
     }
 }

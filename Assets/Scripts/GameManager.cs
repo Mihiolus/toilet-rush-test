@@ -32,6 +32,19 @@ public class GameManager : MonoBehaviour
             _numberOfPathRequired++;
         }
         _pathMovers = FindObjectsOfType<PathMover>();
+        foreach (var pathMover in _pathMovers)
+        {
+            pathMover.OnCollision += ProcessCollision;
+        }
+    }
+
+    private void ProcessCollision()
+    {
+        foreach (var pathmover in _pathMovers)
+        {
+            pathmover.Moving = false;
+        }
+        Debug.Log("Game over");
     }
 
     private void RegisterPath(IEnumerable<Vector3> enumerable)
@@ -41,14 +54,8 @@ public class GameManager : MonoBehaviour
         {
             foreach (var pathMover in _pathMovers)
             {
-                pathMover.StartMoving();
+                pathMover.Moving = true;
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
