@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -27,5 +28,9 @@ public class MenuManager : MonoBehaviour
     public void ShowDefeat()
     {
         _defeatScreen.SetActive(true);
+    }
+
+    public void Retry(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
