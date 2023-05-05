@@ -905,7 +905,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7441018319021522291}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6381453500925955509}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: Retry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4074037940643447648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1925,6 +1937,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _victoryScreen: {fileID: 7154542891466919259}
   _defeatScreen: {fileID: 1154155339952178536}
+  _nextLevel: Level 2
+  _titleScene: Title Screen
 --- !u!1 &8654730500678988001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,7 +2060,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2714495264544354121}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6381453500925955509}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: GoBackToTitle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9111842500520031161
 GameObject:
   m_ObjectHideFlags: 0

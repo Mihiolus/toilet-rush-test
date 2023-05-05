@@ -331,10 +331,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1154155339952178536, guid: 13ca817b0cf365144ada6a1f9d6a6006, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3223221921222232752, guid: 13ca817b0cf365144ada6a1f9d6a6006, type: 3}
       propertyPath: m_Name
       value: UI Setup

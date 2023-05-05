@@ -19,6 +19,7 @@ public class MenuManager : MonoBehaviour
     }
 
     [SerializeField] private GameObject _victoryScreen, _defeatScreen;
+    [SerializeField] private string _nextLevel = "Level 2", _titleScene = "Title";
 
     public void ShowVictory()
     {
@@ -30,11 +31,17 @@ public class MenuManager : MonoBehaviour
         _defeatScreen.SetActive(true);
     }
 
-    public void Retry(){
+    public void Retry()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void NextLevel(){
-        Debug.Log("Load next level");
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(_nextLevel);
+    }
+
+    public void GoBackToTitle(){
+        SceneManager.LoadScene(_titleScene);
     }
 }
