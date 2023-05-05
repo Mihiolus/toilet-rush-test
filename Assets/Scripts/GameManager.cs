@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private int _numberOfPathRequired, _numberOfPathsCreated;
+    private int _numberOfPathRequired, _numberOfPathsCreated, _numberOfFinishes;
     private PathMover[] _pathMovers;
 
     // Start is called before the first frame update
@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     {
         _numberOfPathRequired = 0;
         _numberOfPathsCreated = 0;
+        _numberOfFinishes = 0;
         foreach (var pathCreator in FindObjectsOfType<PathCreator>())
         {
             pathCreator.OnNewPathCreated += RegisterPath;
@@ -35,6 +36,16 @@ public class GameManager : MonoBehaviour
         foreach (var pathMover in _pathMovers)
         {
             pathMover.OnCollision += ProcessCollision;
+            pathMover.OnFinish += ProcessFinish;
+        }
+    }
+
+    private void ProcessFinish()
+    {
+        _numberOfFinishes++;
+        if (_numberOfFinishes == _numberOfPathRequired)
+        {
+            MenuManager.Instance.ShowVictory();
         }
     }
 

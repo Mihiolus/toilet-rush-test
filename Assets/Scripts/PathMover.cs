@@ -14,7 +14,9 @@ public class PathMover : MonoBehaviour
     private Rigidbody2D _body;
     private float _speed;
     public bool Moving { get; set; }
-    public Action OnCollision = delegate { };
+    public Action OnCollision = delegate { }, OnFinish = delegate { };
+    [SerializeField]
+    private string _destinationTag = "Destination";
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +47,10 @@ public class PathMover : MonoBehaviour
             if (displacement.magnitude <= _reachDistance)
             {
                 _nextIndex++;
+                if (_nextIndex == _path.Count)
+                {
+                    OnFinish();
+                }
                 return;
             }
             if (displacement.magnitude > _speed * Time.deltaTime)
