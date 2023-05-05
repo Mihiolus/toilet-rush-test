@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         {
             pathmover.Moving = false;
         }
-        Debug.Log("Game over");
+        MenuManager.Instance.ShowDefeat();
     }
 
     private void RegisterPath(IEnumerable<Vector3> enumerable)
