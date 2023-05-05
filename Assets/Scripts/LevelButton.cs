@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 public class LevelButton : MonoBehaviour
 {
-    [SerializeField] private int _sceneIndex, _levelNumber;
+    [SerializeField] private int _levelNumber;
+    [SerializeField] private string _levelPrefix = "Level ";
 
     public void Load()
     {
-        SceneManager.LoadScene(_sceneIndex);
+        SceneManager.LoadScene($"{_levelPrefix}{_levelNumber}");
     }
 
     private void Start()
