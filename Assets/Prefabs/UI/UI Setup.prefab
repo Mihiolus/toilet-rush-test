@@ -628,7 +628,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 720, y: 1280}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -665,8 +665,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _victoryScreen: {fileID: 7154542891466919259}
   _defeatScreen: {fileID: 1154155339952178536}
-  _nextLevel: Level 2
+  _levelPrefix: 'Level '
   _titleScene: Title Screen
+  _nextLevel: 0
 --- !u!1 &8654730500678988001
 GameObject:
   m_ObjectHideFlags: 0
