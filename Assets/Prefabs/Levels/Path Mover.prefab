@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6403750707047428477}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.2, y: -2.72, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,6 +102,7 @@ MonoBehaviour:
   _pathCreator: {fileID: 0}
   _travelDuration: 2
   _reachDistance: 0.1
+  _destinationTag: Destination
 --- !u!58 &6403750707047428478
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -117,7 +118,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2
 --- !u!50 &6567576384940472930
 Rigidbody2D:
   serializedVersion: 4
