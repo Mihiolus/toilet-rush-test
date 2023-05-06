@@ -19,11 +19,16 @@ public class MenuManager : MonoBehaviour
     }
 
     [SerializeField] private GameObject _victoryScreen, _defeatScreen;
-    [SerializeField] private string _nextLevel = "Level 2", _titleScene = "Title";
+    [SerializeField] private string _levelPrefix = "Level ", _titleScene = "Title";
+    [SerializeField] private int _nextLevel;
 
     public void ShowVictory()
     {
         _victoryScreen.SetActive(true);
+        if (_nextLevel > 0)
+        {
+            PlayerPrefs.SetInt("last level unlocked", _nextLevel);
+        }
     }
 
     public void ShowDefeat()
@@ -38,10 +43,11 @@ public class MenuManager : MonoBehaviour
 
     public void NextLevel()
     {
-        SceneManager.LoadScene(_nextLevel);
+        SceneManager.LoadScene($"{_levelPrefix}{_nextLevel}");
     }
 
-    public void GoBackToTitle(){
+    public void GoBackToTitle()
+    {
         SceneManager.LoadScene(_titleScene);
     }
 }
