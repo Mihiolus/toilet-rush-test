@@ -323,6 +323,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -6.16
       objectReference: {fileID: 0}
+    - target: {fileID: 4932887470729098545, guid: e2d2f2644b381f040af2688f8c76d483, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6909833200787564050, guid: e2d2f2644b381f040af2688f8c76d483, type: 3}
       propertyPath: m_Name
       value: Character Setup (1)
